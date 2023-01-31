@@ -1,8 +1,8 @@
-import 'package:bloc_skeleton/di/di.dart';
-import 'package:bloc_skeleton/presentation/example/example_page.dart';
-import 'package:bloc_skeleton/presentation/main/main_page.dart';
+import 'package:bloc_skeleton/common_ui/color_schemes.g.dart';
+import 'package:bloc_skeleton/di.dart';
+import 'package:bloc_skeleton/src/example/presentation/example/example_page.dart';
+import 'package:bloc_skeleton/src/main/presentation/main_page.dart';
 import 'package:flutter/material.dart';
-import 'package:bloc_skeleton/color_schemes.g.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
