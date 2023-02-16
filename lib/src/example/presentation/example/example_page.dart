@@ -33,6 +33,7 @@ class _ExamplePageView extends StatelessWidget {
       ),
       body: Center(
         child: BlocConsumer<ExampleBloc, ExampleState>(
+          bloc: bloc,
           listener: (context, state) {
             if (state is ExampleLoadingState) {
               print('loading');
