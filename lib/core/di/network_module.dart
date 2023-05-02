@@ -1,5 +1,4 @@
 import 'package:bloc_skeleton/core/data/remote/interceptors/auth_interceptor.dart';
-import 'package:bloc_skeleton/core/utils/date_time_util.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -19,9 +18,9 @@ abstract class NetworkModule {
   ) {
     var option = BaseOptions(
       baseUrl: baseUrl,
-      connectTimeout: DateTimeUtil.fifteenSeconds,
-      sendTimeout: DateTimeUtil.fifteenSeconds,
-      receiveTimeout: DateTimeUtil.fifteenSeconds,
+      connectTimeout: const Duration(seconds: 15),
+      sendTimeout: const Duration(seconds: 15),
+      receiveTimeout: const Duration(seconds: 15),
     );
 
     var dio = Dio(option);

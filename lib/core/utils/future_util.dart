@@ -12,14 +12,14 @@ FutureOrError<T> callOrError<T>(
     return Right(await block());
   } on DioError catch (e) {
     switch (e.type) {
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionTimeout:
       case DioErrorType.sendTimeout:
       case DioErrorType.receiveTimeout:
         return Left(ErrorDto(
           message: 'Connection timeout',
           errorType: ErrorType.connectionTimeout,
         ));
-      case DioErrorType.response:
+      case DioErrorType.badResponse:
         var statusCode = e.response?.statusCode ?? 0;
         var message = '';
         try {
@@ -56,10 +56,9 @@ FutureOrError<T> callOrError<T>(
               errorType: ErrorType.unknown,
             ));
         }
-      case DioErrorType.cancel:
-      case DioErrorType.other:
+      default:
         return Left(ErrorDto(
-          message: e.message,
+          message: 'Unknown Error',
         ));
     }
   } on Exception catch (e) {
