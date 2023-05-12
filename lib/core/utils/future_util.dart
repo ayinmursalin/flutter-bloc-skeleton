@@ -5,9 +5,7 @@ import 'package:bloc_skeleton/core/utils/typedef_util.dart';
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
 
-FutureOrError<T> callOrError<T>(
-  Future<T> Function() block,
-) async {
+FutureOrError<T> callOrError<T>(Future<T> Function() block,) async {
   try {
     return Right(await block());
   } on DioError catch (e) {
@@ -25,7 +23,7 @@ FutureOrError<T> callOrError<T>(
         try {
           var r = ErrorResponse.fromJson(e.response?.data);
           message = r.message ?? '';
-        } on Exception {
+        } catch (e) {
           message = 'Unknown Error';
         }
 

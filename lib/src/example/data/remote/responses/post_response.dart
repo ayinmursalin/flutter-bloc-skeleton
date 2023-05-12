@@ -1,4 +1,18 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'post_response.g.dart';
+
+@JsonSerializable()
 class PostResponse {
+  @JsonKey(name: 'userId')
+  final int? userId;
+  @JsonKey(name: 'id')
+  final int? id;
+  @JsonKey(name: 'title')
+  final String? title;
+  @JsonKey(name: 'body')
+  final String? body;
+
   PostResponse({
     this.userId,
     this.id,
@@ -6,24 +20,6 @@ class PostResponse {
     this.body,
   });
 
-  PostResponse.fromJson(dynamic json) {
-    userId = json['userId'];
-    id = json['id'];
-    title = json['title'];
-    body = json['body'];
-  }
-
-  int? userId;
-  int? id;
-  String? title;
-  String? body;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['userId'] = userId;
-    map['id'] = id;
-    map['title'] = title;
-    map['body'] = body;
-    return map;
-  }
+  factory PostResponse.fromJson(Map<String, dynamic> json) =>
+      _$PostResponseFromJson(json);
 }
